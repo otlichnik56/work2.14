@@ -7,6 +7,83 @@ public class StringList {
 
     private final List<Integer> result = new ArrayList<>();
 
+
+// домашка 2.15
+
+
+    // Пузырьковая сортировка. Сортирует где-то 39-40 секунд
+    public static void sortBubble(List<Integer> arr) {
+        for (int i = 0; i < arr.size() - 1; i++) {
+            for (int j = 0; j < arr.size() - 1 - i; j++) {
+                if (arr.get(j) > arr.get(j + 1)) {
+                    Integer m = arr.get(j);
+                    Integer n = arr.get(j + 1);
+                    arr.set(j, n);
+                    arr.set(j + 1, m);
+                }
+            }
+        }
+    }
+
+    // Сортировка выбором. Сортирует где-то 11-12 секунд
+    public static void sortSelection(List<Integer> arr) {
+        for (int i = 0; i < arr.size() - 1; i++) {
+            int minElementIndex = i;
+            for (int j = i + 1; j < arr.size(); j++) {
+                if (arr.get(j) < arr.get(minElementIndex)) {
+                    minElementIndex = j;
+                }
+            }
+            Integer m = arr.get(minElementIndex);
+            Integer n = arr.get(i);
+            arr.set(minElementIndex, n);
+            arr.set(i, m);
+        }
+    }
+
+    // Сортировка вставкой. Сортирует где-то 10-11 секунд
+    public static void sortInsertion(List<Integer> arr) {
+        for (int i = 1; i < arr.size(); i++) {
+            int temp = arr.get(i);
+            int j = i;
+            while (j > 0 && arr.get(j - 1) >= temp) {
+                Integer n = arr.get(j - 1);
+                arr.set(j, n);
+                j --;
+            }
+            arr.set(j, temp);
+        }
+    }
+
+    // Бинарный поиск
+    private static boolean contains(List<Integer> arr, int element) {
+        sortInsertion(arr);
+        int min = 0;
+        int max = arr.size() - 1;
+
+        while (min <= max) {
+            int mid = (min + max) / 2;
+
+            if (element == arr.get(mid)) {
+                return true;
+            }
+
+            if (element < arr.get(mid)) {
+                max = mid - 1;
+            } else {
+                min = mid + 1;
+            }
+        }
+        return false;
+    }
+
+
+
+
+
+// домашка 2.14
+
+
     // Добавление элемента.
     // Вернуть добавленный элемент в качестве результата выполнения.
     public Integer addStringAddReturnResult(Integer item) {
@@ -120,70 +197,5 @@ public class StringList {
         return new ArrayList<>(result);
     }
 
-    // Пузырьковая сортировка. Сортирует где-то 39-40 секунд
-    public static void sortBubble(List<Integer> arr) {
-        for (int i = 0; i < arr.size() - 1; i++) {
-            for (int j = 0; j < arr.size() - 1 - i; j++) {
-                if (arr.get(j) > arr.get(j + 1)) {
-                    Integer m = arr.get(j);
-                    Integer n = arr.get(j + 1);
-                    arr.set(j, n);
-                    arr.set(j + 1, m);
-                }
-            }
-        }
-    }
-
-    // Сортировка выбором. Сортирует где-то 11-12 секунд
-    public static void sortSelection(List<Integer> arr) {
-        for (int i = 0; i < arr.size() - 1; i++) {
-            int minElementIndex = i;
-            for (int j = i + 1; j < arr.size(); j++) {
-                if (arr.get(j) < arr.get(minElementIndex)) {
-                    minElementIndex = j;
-                }
-            }
-            Integer m = arr.get(minElementIndex);
-            Integer n = arr.get(i);
-            arr.set(minElementIndex, n);
-            arr.set(i, m);
-        }
-    }
-
-    // Сортировка вставкой. Сортирует где-то 10-11 секунд
-    public static void sortInsertion(List<Integer> arr) {
-        for (int i = 1; i < arr.size(); i++) {
-            int temp = arr.get(i);
-            int j = i;
-            while (j > 0 && arr.get(j - 1) >= temp) {
-                  Integer n = arr.get(j - 1);
-                arr.set(j, n);
-                j --;
-            }
-            arr.set(j, temp);
-        }
-    }
-
-    // Бинарный поиск
-    private static boolean contains(List<Integer> arr, int element) {
-        sortInsertion(arr);
-        int min = 0;
-        int max = arr.size() - 1;
-
-        while (min <= max) {
-            int mid = (min + max) / 2;
-
-            if (element == arr.get(mid)) {
-                return true;
-            }
-
-            if (element < arr.get(mid)) {
-                max = mid - 1;
-            } else {
-                min = mid + 1;
-            }
-        }
-        return false;
-    }
 
 }
