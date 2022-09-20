@@ -10,7 +10,6 @@ public class StringList {
 
 // домашка 2.15
 
-
     // Пузырьковая сортировка. Сортирует где-то 39-40 секунд
     public static void sortBubble(List<Integer> arr) {
         for (int i = 0; i < arr.size() - 1; i++) {
