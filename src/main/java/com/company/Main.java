@@ -38,6 +38,9 @@ public class Main {
 //        StringList.sortInsertion(list3);
 //        System.out.println(System.currentTimeMillis() - start3);
 
+        MyArrayList arrayImp = new Integer[1, i];
+
+
     }
 
 }

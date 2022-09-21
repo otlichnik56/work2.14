@@ -1,16 +1,17 @@
 package com.company;
 
-import java.sql.Array;
-
-public class ArrayList {
-
-
+public class MyArrayList {
     private final Integer[] array;
 
-// домашка 2.16
+    public MyArrayList(Integer[] array) {
+        this.array = array;
+    }
+
+
+    // домашка 2.16
 
     public void grow(Integer[] array) {
-        array =  new Integer[];
+
         int capacity = array.length;
         capacity *= 1.5;
         Integer[] newArray = new Integer[capacity];
